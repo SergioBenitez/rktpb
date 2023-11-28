@@ -1,0 +1,7 @@
+target
+.cargo
+*.sh
+*.tar.gz
+Paste.toml
+upload/**/*
+!upload/README

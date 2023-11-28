@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Rocket Powered Pastebin</title>
+    <meta name="author" content="Sergio Benitez" />
+    <meta name="description" content="paste.rs is a simple, no-frills,
+        command-line driven pastebin service powered by the Rocket web
+        framework." />
+    <link href="{{ config.server_url }}/new" rel="canonical" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  </head>
+  <body><pre>
+  ABOUT
+
+      A simple pastebin powered by <a href="http://rocket.rs">Rocket</a>.
+
+      Simple API. CLI. Web form. Renders Markdown. Highlights code.
+
+      Web Form: <a href="{{ config.server_url }}/web" alt="paste.rs web interface">{{ config.server_url }}/web</a>
+
+  API USAGE
+
+      POST {{ config.server_url }}/
+
+          Send the raw data along. Will respond with a link to the paste.
+
+          If the response code is 201 (CREATED), then the entire paste was
+          uploaded. If the response is 206 (PARTIAL), then the paste exceeded
+          the server's maximum upload size, and only part of the paste was
+          uploaded. If the response code is anything else, an error has
+          occurred. Pasting is heavily rate limited.
+
+      GET {{ config.server_url }}/&lt;id>
+
+          Retrieve the paste with the given id as plain-text.
+
+      GET {{ config.server_url }}/&lt;id>.&lt;ext>
+
+          Retrieve the paste with the given id.
+
+          If ext is "md", "mdown", or "markdown", the paste is rendered as
+          markdown into HTML. If ext is a known code file extension, the paste
+          is syntax highlighted and returned as HTML. If ext is a known format
+          extension, the paste is returned with the format's corresponding
+          Content-Type. Otherwise, the paste is returned as unmodified text.
+
+      DELETE {{ config.server_url }}/&lt;id>
+
+          Delete the paste with the given id.
+
+  EXAMPLES
+
+      Paste a file named 'file.txt' using {{ cmd }}:
+
+          {% if os == "windows" -%}
+              Invoke-RestMethod -Uri "{{ config.server_url }}" -Method Post -InFile .\file.txt
+          {%- else -%}
+              curl --data-binary @file.txt {{ config.server_url }}/
+          {%- endif %}
+
+      Paste from stdin using {{ cmd }}:
+
+          {% if os == "windows" -%}
+              echo "Hi!" | Invoke-RestMethod -Uri "{{ config.server_url }}" -Method Post
+          {%- else -%}
+              echo "Hello, world." | curl --data-binary @- {{ config.server_url }}/
+          {%- endif %}
+
+      Delete an existing paste with id &lt;id> using {{ cmd }}:
+
+          {% if os == "windows" -%}
+              Invoke-RestMethod -Uri "{{ config.server_url }}/&lt;id>" -Method Delete
+          {%- else -%}
+              curl -X DELETE {{ config.server_url }}/&lt;id>
+          {%- endif %}
+
+      {% if os == "windows" -%}
+         A {{ cmd }} function that can be used for quick pasting from the
+      command line. The command takes a filename or reads from stdin if none was
+      supplied and outputs the URL of the paste to stdout: `Paste file.txt` or
+      `echo "hi" | Paste`.
+
+          function Paste([string]$file) {
+              $Data = if ($file) {Get-Content $file} else {$input}
+              Invoke-RestMethod -Uri "{{ config.server_url }}" -Method Post -Body $Data
+          }
+      {%- else -%}
+         A shell function that can be added to `.bashrc` or `.bash_profle` for
+      quick pasting from the command line. The command takes a filename or reads
+      from stdin if none was supplied and outputs the URL of the paste to
+      stdout: `paste file.txt` or `echo "hi" | paste`.
+
+          function paste() {
+              local file=${1:-/dev/stdin}
+              curl --data-binary @${file} {{ config.server_url }}
+          }
+      {%- endif %}
+  </pre></body>
+</html>

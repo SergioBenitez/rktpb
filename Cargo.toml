@@ -1,0 +1,26 @@
+[package]
+name = "rktpb"
+version = "1.0.0"
+authors = ["Sergio Benitez <sb@sergio.bz>"]
+edition = "2021"
+description = "A pastebin that does just enough to be really useful."
+repository = "https://github.com/SergioBenitez/rktpb"
+readme = "README.md"
+keywords = ["pastebin", "rocket", "server", "markdown", "highlight"]
+license = "AGPL-3.0-only"
+categories = ["web-programming::http-server"]
+
+[lints.clippy]
+large_enum_variant = "allow"
+mutable_key_type = "allow"
+
+[dependencies]
+rocket = "0.5"
+rocket_dyn_templates = { version = "0.1", features = ["tera"] }
+yansi = "1.0.0-rc"
+rand = "0.8"
+syntect = "5"
+comrak = "0.19"
+futures = "0.3"
+humantime = "2.1"
+humantime-serde = "1.1"

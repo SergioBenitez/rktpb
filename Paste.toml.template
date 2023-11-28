@@ -1,0 +1,29 @@
+[default] # default configuration irrespective of compilation mode
+id_length = 3                        # paste ID length
+upload_dir = "upload"                # directory to save uploads in
+paste_limit = "384KiB"               # maximum paste upload file size
+max_age = "30 days"                  # how long a paste is considered fresh
+reap_interval = "5 minutes"          # how often to reap stale uploads
+server_url = "http://127.0.0.1:8000" # URL server is reachable at
+address = "127.0.0.1"                # address to listen on
+port = 8000                          # port to listen on
+keep_alive = 5                       # HTTP keep-alive in seconds
+ident = "Rocket"                     # server `Ident` header
+ip_header = "X-Real-IP"              # header to inspect for client IP
+log_level = "normal"                 # console log level
+cli_colors = true                    # enable (detect TTY) or disable CLI colors
+
+[default.cors] # CORS config - one key/value for each allowed host
+"https://example.com" = ["options", "get", "post", "delete"] # methods to allow
+
+[default.shutdown] # settings for graceful shutdown
+ctrlc = true               # whether `<ctrl-c>` initiates a shutdown
+signals = ["term", "hup"]  # signals that initiate a shutdown
+grace = 5                  # grace period length in seconds
+mercy = 5                  # mercy period length in seconds
+
+[debug] # overrides for when application is compiled in debug mode
+# key/values are identical to `default`
+
+[release] # overrides for when application is compiled in release mode
+# key/values are identical to `default`
