@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Markdown | Rocket Powered Pastebin</title>
+    <title>Markdown | {{ id }} | Rocket Powered Pastebin</title>
     <meta name="author" content="Sergio Benitez" />
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self';
@@ -11,10 +11,9 @@
       script-src 'none';
       img-src *;
     ">
-    <meta name="description" content="paste.rs is a simple, no-frills,
-        command-line driven pastebin service powered by the Rocket web
-        framework." />
-    <link href="{{ config.server_url }}//paste.rs/{{ id }}" rel="canonical" />
+    <meta name="description" content="a simple, no-frills, command-line driven
+      pastebin service powered by the Rocket web framework.">
+    <link href="{{ config.server_url }}/{{ id }}" rel="canonical" />
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">

@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <title>New Paste | Rocket Powered Pastebin</title>
     <meta name="author" content="Sergio Benitez" />
-    <meta name="description" content="paste.rs is a simple, no-frills,
-        command-line driven pastebin service powered by the Rocket web
-        framework. This is a web form for creating a new paste." />
+    <meta name="description" content="a simple, no-frills, command-line driven
+      pastebin service powered by the Rocket web framework. This is a web form
+      for creating a new paste." />
     <link href="{{ config.server_url }}/new" rel="canonical" />
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
