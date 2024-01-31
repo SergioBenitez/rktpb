@@ -33,7 +33,7 @@ pub struct Highlighter {
 
 impl Highlighter {
     pub fn default() -> Option<Self> {
-        let mut reader = io::Cursor::new(include_str!("../static/GitHub.tmTheme"));
+        let mut reader = io::Cursor::new(include_str!("../static/GitHub.tmtheme"));
         Some(Highlighter {
             theme: ThemeSet::load_from_reader(&mut reader).ok()?,
             syntaxes: SyntaxSet::load_defaults_newlines(),
