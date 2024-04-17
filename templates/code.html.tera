@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Source Code | {{ id }} | Rocket Powered Pastebin</title>
     <meta name="author" content="Sergio Benitez" />
     <meta http-equiv="Content-Security-Policy" content="
@@ -21,21 +22,17 @@
     <link rel="stylesheet" href="/code.min.css">
   </head>
   <body>
-    <article class="code-body">
-      <table>
-        <tr>
-          <td class="linenos">
-            <pre>
-              {%- for l in range(start=1,end=lines) -%}
-              <span>{{ l }}&#10;</span>
-              {%- endfor -%}
-            </pre>
-          </td>
-          <td class="code">
-            {{ content | safe }}
-          </td>
-        </tr>
-      </table>
-    </article>
+    <main>
+      <div class="code gutter">
+        <pre>
+          {%- for l in range(start=1,end=lines) -%}
+          <span>{{ l }}&#10;</span>
+          {%- endfor -%}
+        </pre>
+      </div>
+      <div class="code text">
+          {{ content | safe }}
+      </div>
+    </main>
   </body>
 </html>

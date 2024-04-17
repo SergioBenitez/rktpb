@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>New Paste | Rocket Powered Pastebin</title>
     <meta name="author" content="Sergio Benitez" />
     <meta name="description" content="a simple, no-frills, command-line driven
@@ -11,6 +12,7 @@
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="/normalize.min.css">
     <style type="text/css" media="screen">
       html, body, .container, form { padding: 0; height: 100%; }
       .container { margin: 10px; }
