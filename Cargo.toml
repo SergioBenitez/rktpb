@@ -20,7 +20,7 @@ rocket_dyn_templates = { version = "0.1", features = ["tera"] }
 yansi = "1.0.0-rc"
 rand = "0.8"
 syntect = "5"
-comrak = "0.19"
+comrak = "0.22"
 futures = "0.3"
 humantime = "2.1"
 humantime-serde = "1.1"
