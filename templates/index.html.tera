@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Rocket Powered Pastebin</title>
-    <meta name="author" content="Sergio Benitez" />
-    <meta name="description" content="a simple, no-frills, command-line driven
-      pastebin service powered by the Rocket web framework.">
-    <link href="{{ config.server_url }}/new" rel="canonical">
-    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-  </head>
-  <body><pre>
+{% extends 'base' %}
+{% block title %}Rocket Powered Pastebin{% endblock title %}
+{% block body %}<pre>
   ABOUT
 
       A simple pastebin powered by <a href="http://rocket.rs">Rocket</a>.
@@ -98,5 +86,5 @@
               curl --data-binary @${file} {{ config.server_url }}
           }
       {%- endif %}
-  </pre></body>
-</html>
+</pre>
+{% endblock body %}

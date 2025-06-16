@@ -1,38 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Source Code | {{ id }} | Rocket Powered Pastebin</title>
-    <meta name="author" content="Sergio Benitez" />
-    <meta http-equiv="Content-Security-Policy" content="
-      default-src 'self';
-      font-src data:;
-      style-src-attr 'unsafe-inline';
-      script-src 'none'
-    ">
-    <meta name="description" content="a simple, no-frills, command-line driven
-      pastebin service powered by the Rocket web framework.">
-    <link href="{{ config.server_url }}/{{ id }}" rel="canonical">
-    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/normalize.min.css">
-    <link rel="stylesheet" href="/code.min.css">
-  </head>
-  <body>
-    <main>
-      <div class="code gutter">
-        <pre>
-          {%- for l in range(start=1,end=lines) -%}
-          <span>{{ l }}&#10;</span>
-          {%- endfor -%}
-        </pre>
-      </div>
-      <div class="code text">
-          {{ content | safe }}
-      </div>
-    </main>
-  </body>
-</html>
+{% extends 'base' %}
+{% block title %}Source Code | {{ id }} | Rocket Powered Pastebin{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="/normalize.min.css">
+<link rel="stylesheet" href="/code.min.css">
+{% include 'csp' %}
+{% endblock head %}
+{% block body %}
+<main>
+  <div class="code gutter">
+    <pre>
+      {%- for l in range(start=1,end=lines) -%}
+      <span>{{ l }}&#10;</span>
+      {%- endfor -%}
+    </pre>
+  </div>
+  <div class="code text">
+      {{ content | safe }}
+  </div>
+</main>
+{% endblock body %}

@@ -1,27 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Markdown | {{ id }} | Rocket Powered Pastebin</title>
-    <meta name="author" content="Sergio Benitez" />
-    <meta http-equiv="Content-Security-Policy" content="
-      default-src 'self';
-      font-src data:;
-      style-src-attr 'unsafe-inline';
-      script-src 'none';
-      img-src *;
-    ">
-    <meta name="description" content="a simple, no-frills, command-line driven
-      pastebin service powered by the Rocket web framework.">
-    <link href="{{ config.server_url }}/{{ id }}" rel="canonical" />
-    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/markdown.min.css">
-  </head>
-  <body>
-    <article class="markdown-body">{{ content | safe }}</article>
-  </body>
-</html>
+{% extends 'base' %}
+{% block title %}Markdown | {{ id }} | Rocket Powered Pastebin{% endblock title %}
+{% block head %}
+{% include 'csp' %}
+<link rel="stylesheet" href="/markdown.min.css">
+<link href="{{ config.server_url }}/{{ id }}" rel="canonical" />
+{% endblock head %}
+{% block body %}
+<article class="markdown-body">{{ content | safe }}</article>
+{% endblock body %}

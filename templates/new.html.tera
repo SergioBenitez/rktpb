@@ -1,64 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>New Paste | Rocket Powered Pastebin</title>
-    <meta name="author" content="Sergio Benitez" />
-    <meta name="description" content="a simple, no-frills, command-line driven
-      pastebin service powered by the Rocket web framework. This is a web form
-      for creating a new paste." />
-    <link href="{{ config.server_url }}/new" rel="canonical" />
-    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="stylesheet" href="/normalize.min.css">
-    <style type="text/css" media="screen">
-      html, body, .container, form { padding: 0; height: 100%; }
-      .container { margin: 10px; }
+{% extends 'base' %}
+{% block title %}New Paste | Rocket Powered Pastebin{% endblock title %}
+{% block head %}
+<style type="text/css" media="screen">
+  html, body, .container, form { padding: 0; height: 100%; }
+  .container { margin: 10px; }
 
-      .error {
-         border: 2px solid red;
-         margin-bottom: 10px;
-      }
+  .error {
+     border: 2px solid red;
+     margin-bottom: 10px;
+  }
 
-      textarea {
-         width: 100%;
-         height: 75%;
-         padding: 10px;
-         box-sizing: border-box;
-         margin-bottom: 10px;
-      }
+  textarea {
+     width: 100%;
+     height: 75%;
+     padding: 10px;
+     box-sizing: border-box;
+     margin-bottom: 10px;
+  }
 
-      input[type="submit"] {
-         margin-top: 10px;
-         padding: 5px;
-      }
-    </style>
-  </head>
-  <body>
-     <div class="container">
-        {% if error %}
-           <div class="error">
-              Error: {{ error }}
-           </div>
-        {% endif %}
+  input[type="submit"] {
+     margin-top: 10px;
+     padding: 5px;
+  }
+</style>
+{% endblock head %}
+{% block body %}
+<div class="container">
+    {% if error %}
+       <div class="error">
+          Error: {{ error }}
+       </div>
+    {% endif %}
 
-        <form method="post" action="/web">
-           <textarea name="content" required minlength="1" maxlength="393216" \
-              placeholder="Paste your code here..." cols="80" rows="30"></textarea>
-           <br />
-           <label for="ext">File Extension:</label>
-           <select name="ext">
-              {% for ext in extensions %}
-                 <option {% if ext == "txt" %}selected{% endif %} value="{{ ext }}">
-                    {{ ext }}
-                 </option>
-              {% endfor %}
-           </select>
-           <br />
-           <input type="submit" value="Paste!" />
-        </form>
-     </div>
-  </body>
-</html>
+    <form method="post" action="/web">
+       <textarea name="content" required minlength="1" maxlength="393216" \
+          placeholder="Paste your code here..." cols="80" rows="30"></textarea>
+       <br />
+       <label for="ext">File Extension:</label>
+       <select name="ext">
+          {% for ext in extensions %}
+             <option {% if ext == "txt" %}selected{% endif %} value="{{ ext }}">
+                {{ ext }}
+             </option>
+          {% endfor %}
+       </select>
+       <br />
+       <input type="submit" value="Paste!" />
+    </form>
+</div>
+{% endblock body %}
