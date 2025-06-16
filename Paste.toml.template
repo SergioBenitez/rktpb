@@ -12,6 +12,8 @@ ident = "Rocket"                     # server `Ident` header
 ip_header = "X-Real-IP"              # header to inspect for client IP
 log_level = "normal"                 # console log level
 cli_colors = true                    # enable (detect TTY) or disable CLI colors
+# If you modify the code on your running instance, you are legally obligated to update this
+source_code_url = "https://github.com/SergioBenitez/rktpb"
 
 [default.cors] # CORS config - one key/value for each allowed host
 "https://example.com" = ["options", "get", "post", "delete"] # methods to allow

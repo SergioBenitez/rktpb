@@ -64,6 +64,8 @@ The complete list of configurable parameters is below:
 | `shutdown.signals` | `["term", "hup"]`           | signals that initiate a shutdown          |
 | `shutdown.grace`   | `5`                         | grace period length in seconds            |
 | `shutdown.mercy`   | `5`                         | mercy period length in seconds            |
+|                    |                             |                                           |
+| `source_code_url`  | (this repo)                 | a link to your instance's source code     |
 
 You'll definitely want to configure the values in the first two categories, from
 `id_length` to `cors`.
