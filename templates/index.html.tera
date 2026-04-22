@@ -95,7 +95,7 @@
 
           function paste() {
               local file=${1:-/dev/stdin}
-              curl --data-binary @${file} {{ config.server_url }}
+              curl --data-binary @"${file}" {{ config.server_url }}
           }
       {%- endif %}
   </pre></body>
